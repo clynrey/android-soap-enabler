@@ -1,0 +1,5 @@
+    Android SOAP Enabler Library is built upon the Android SDK.
+
+    For more information about Android SDK, the http://developer.android.com/
+
+    This library include Base64Coder.java from Christian d'Heureuse, Inventec Informatik AG, Zurich, Switzerland
