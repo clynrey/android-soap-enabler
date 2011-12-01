@@ -35,7 +35,7 @@ public class IntegrationTestContactService
     public void setUp()
         throws Exception
     {
-        service = new ContactServiceSoapImpl( new URL( ContactServiceSoapImpl.DEFAULT_URL ) );
+        service = new ContactServiceSoapImpl( new URL( ContactServiceSoapImpl.SOAPUI_URL ) );
     }
 
     @Test
@@ -69,7 +69,7 @@ public class IntegrationTestContactService
         } );
         synchronized ( lock )
         {
-            lock.wait();
+            lock.wait(1000);
         }
     }
 

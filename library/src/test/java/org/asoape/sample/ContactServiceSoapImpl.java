@@ -32,7 +32,9 @@ import fr.norsys.asoape.xml.soap.SoapEnvelope;
 public class ContactServiceSoapImpl
     implements ContactService
 {
-    public static final String DEFAULT_URL = "http://localhost:8088/mockContactService";
+    public static final String SOAPUI_URL = "http://localhost:8088/mockContactService";
+
+    public static final String DEFAULT_URL = "http://localhost:8080/test-services/ContactService";
 
     public static Logger logger;
 

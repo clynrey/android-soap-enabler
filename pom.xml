@@ -58,11 +58,11 @@
 	</licenses>
 	<modules>
 		<module>library</module>
+		<module>test/services</module>
 		<!-- 
 		<module>codegen</module>
 		<module>anttask</module>
 		<module>mojo</module>
-		<module>test</module>
 		 -->
 	</modules>
 	<scm>

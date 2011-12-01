@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="ASOAPE-Test" resourceRoot="" soapui-version="3.6.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="ContactServiceBinding" type="wsdl" bindingName="{http://asoape.norsys.fr/sample/}ContactServiceBinding" soapVersion="1_1" anonymous="optional" definition="file:/home/gwallet/Travaux/google.com/android-soap-enabler/test/NewWSDLFile.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/gwallet/Travaux/google.com/android-soap-enabler/test/NewWSDLFile.wsdl"><con:part><con:url>file:/home/gwallet/Travaux/google.com/android-soap-enabler/test/NewWSDLFile.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="NewWSDLFile" targetNamespace="http://asoape.norsys.fr/sample/" xmlns:sample="http://asoape.norsys.fr/sample/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://asoape.norsys.fr/sample/">
+      <xsd:element name="findContactWithNameLike">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="nameLike" type="xsd:string"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="findContactWithNameLikeResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="contact" type="sample:ContactType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="ContactType">
+        <xsd:sequence>
+          <xsd:element name="firstname" type="xsd:string"></xsd:element>
+          <xsd:element name="lastname" type="xsd:string"></xsd:element>
+          <xsd:element name="email" type="sample:ContactEmailType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+          <xsd:element name="phone" type="sample:ContactPhoneType" minOccurs="0" maxOccurs="unbounded"></xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ContactEmailType">
+        <xsd:complexContent>
+          <xsd:extension base="sample:ContactInfoType">
+            <xsd:sequence>
+              <xsd:element name="email" type="xsd:string"></xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ContactPhoneType">
+        <xsd:complexContent>
+          <xsd:extension base="sample:ContactInfoType">
+            <xsd:sequence>
+              <xsd:element name="phone" type="xsd:string"></xsd:element>
+            </xsd:sequence>
+          </xsd:extension>
+        </xsd:complexContent>
+      </xsd:complexType>
+      <xsd:complexType name="ContactInfoType" abstract="true">
+        <xsd:sequence>
+          <xsd:element name="kind" type="sample:ContactKindType"></xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="ContactKindType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="PERSONNAL"/>
+          <xsd:enumeration value="PROFESSIONNAL"/>
+          <xsd:enumeration value="OTHERS"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="findContactWithNameLikeRequest">
+    <wsdl:part name="parameters" element="sample:findContactWithNameLike"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findContactWithNameLikeResponse">
+    <wsdl:part name="parameters" element="sample:findContactWithNameLikeResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ContactServiceType">
+    <wsdl:operation name="findContactWithNameLike">
+      <wsdl:input message="sample:findContactWithNameLikeRequest"/>
+      <wsdl:output message="sample:findContactWithNameLikeResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ContactServiceBinding" type="sample:ContactServiceType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="findContactWithNameLike">
+      <soap:operation soapAction="http://asoape.norsys.fr/sample/findContactWithNameLike"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ContactService">
+    <wsdl:port name="ContactServicePort" binding="sample:ContactServiceBinding">
+      <soap:address location="http://www.example.org/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://www.example.org/</con:endpoint><con:endpoint>http://gwallet-macbookpro:8088/mockContactService</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://asoape.norsys.fr/sample/findContactWithNameLike" name="findContactWithNameLike" bindingOperationName="findContactWithNameLike" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://gwallet-macbookpro:8088/mockContactService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sam="http://asoape.norsys.fr/sample/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sam:findContactWithNameLike>
+         <nameLike>du</nameLike>
+      </sam:findContactWithNameLike>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://asoape.norsys.fr/sample/findContactWithNameLike"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:mockService port="8088" path="/mockContactService" host="gwallet-macbookpro" name="Contact MockService"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="findContactWithNameLike" interface="ContactServiceBinding" operation="findContactWithNameLike"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sam="http://asoape.norsys.fr/sample/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <sam:findContactWithNameLikeResponse>
+         <contact>
+            <firstname>Sophie</firstname>
+            <lastname>Dupont</lastname>
+            <email>
+               <kind>PERSONNAL</kind>
+               <email>sophie.dupont@perso.eml</email>
+            </email>
+            <email>
+               <kind>PROFESSIONNAL</kind>
+               <email>sdupont@company.eml</email>
+            </email>
+            <phone>
+               <kind>PROFESSIONNAL</kind>
+               <phone>+33328123456</phone>
+            </phone>
+         </contact>
+         <contact>
+            <firstname>Lucie</firstname>
+            <lastname>Durant</lastname>
+            <email>
+               <kind>PERSONNAL</kind>
+               <email>lucie.durant@my.eml</email>
+            </email>
+            <email>
+               <kind>OTHERS</kind>
+               <email>ldurant@others.eml</email>
+            </email>
+            <phone>
+               <kind>PROFESSIONNAL</kind>
+               <phone>+33328123456</phone>
+            </phone>
+            <phone>
+               <kind>PERSONNAL</kind>
+               <phone>+33654321098</phone>
+            </phone>
+         </contact>
+      </sam:findContactWithNameLikeResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://asoape.norsys.fr/sample/findContactWithNameLike"/></con:response><con:dispatchConfig/></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>

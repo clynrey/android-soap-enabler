@@ -1,0 +1,5 @@
+    Android SOAP Enabler Tests Project runs into a Servlet Container.
+    It depends on Servlet 3.0 API and launch Tomcat 7.0 for integration tests.
+
+    For more information about Servlet 3.0, see http://what.fucking.url/
+    For more information about Tomcat Servlet Engine, see http://tomcat.apache.org/
