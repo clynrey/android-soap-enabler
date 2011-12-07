@@ -60,9 +60,9 @@
 		<module>library</module>
 		<module>codegen</module>
 		<module>test/services</module>
+		<module>mojo</module>
 		<!-- 
 		<module>anttask</module>
-		<module>mojo</module>
 		 -->
 	</modules>
 	<scm>

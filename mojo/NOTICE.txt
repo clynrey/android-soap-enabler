@@ -1,0 +1,4 @@
+    Android SOAP Enabler Maven Plugin extends Apache Maven 2+.
+
+    For more information about Apache Maven, see http://maven.apache.org/
+
