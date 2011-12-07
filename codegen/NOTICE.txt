@@ -1,0 +1,3 @@
+    Android SOAP Enabler Code Generation Tool depends on software from the Apache Fondation.
+
+    For more information about Apache Velocity, the http://velocity.apache.org/
