@@ -1,0 +1,4 @@
+    Android SOAP Enabler Ant Task provide an Apache Ant task.
+
+    For more information about Apache Ant, see http://ant.apache.org/
+

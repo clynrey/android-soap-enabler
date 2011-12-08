@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+    Android SOAP Enabler is free software: you can redistribute it and/or modify
+    it under the terms of the Lesser GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, 
+    or any later version.
+
+    Android SOAP Enabler is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the Lesser GNU General Public License
+    along with Android SOAP Enabler.  If not, see <http://www.gnu.org/licenses/>.
+
+    ©2011, Android SOAP Enabler Development Team
+     ====================================================================== -->
+<project name="Contact" default="test">
+	<description>
+            Contact SOAP Client
+    </description>
+
+	<property name="m2.repo" location="${user.home}/.m2/repository" />
+	<property name="test.src" location="${basedir}/src/test" />
+	<property name="wsdl.src" location="${basedir}/src/wsdl" />
+	<property name="soap.src" location="${basedir}/build/generated-sources/asoape" />
+	<property name="classes" location="${basedir}/build/classes" />
+	<property name="test-classes" location="${basedir}/build/test-classes" />
+	<property name="test.out" location="${basedir}/build/test-reports" />
+
+	<taskdef name="generateSoap" classname="fr.norsys.asoape.anttask.GenerateAndroidClientTask">
+		<classpath>
+			<pathelement location="${basedir}/../../../target/asoape-ant-task-1.0-SNAPSHOT.jar" />
+			<pathelement location="${m2.repo}/fr/norsys/asoape/codegen-engine/1.0-SNAPSHOT/codegen-engine-1.0-SNAPSHOT.jar" />
+			<pathelement location="${m2.repo}/wsdl4j/wsdl4j/1.6.2/wsdl4j-1.6.2.jar" />
+			<pathelement location="${m2.repo}/org/apache/ws/commons/schema/XmlSchema/1.4.5/XmlSchema-1.4.5.jar" />
+			<pathelement location="${m2.repo}/org/slf4j/slf4j-api/1.6.4/slf4j-api-1.6.4.jar" />
+			<pathelement location="${m2.repo}/org/apache/velocity/velocity/1.6.4/velocity-1.6.4.jar" />
+			<pathelement location="${m2.repo}/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar" />
+			<pathelement location="${m2.repo}/commons-lang/commons-lang/2.4/commons-lang-2.4.jar" />
+			<pathelement location="${m2.repo}/commons-io/commons-io/2.0/commons-io-2.0.jar" />
+		</classpath>
+	</taskdef>
+
+	<target name="clean">
+		<delete dir="${basedir}/build" />
+	</target>
+
+	<target name="test" depends="test-compile">
+		<mkdir dir="${test.out}" />
+		<junit haltonfailure="yes" haltonerror="yes" printsummary="no" fork="yes">
+			<classpath>
+				<pathelement location="${classes}" />
+				<pathelement location="${test-classes}" />
+				<pathelement location="${m2.repo}/junit/junit/4.8.2/junit-4.8.2.jar" />
+				<pathelement location="${m2.repo}/fr/norsys/asoape/runtime-library/1.0-SNAPSHOT/runtime-library-1.0-SNAPSHOT.jar" />
+				<pathelement location="${m2.repo}/org/apache/httpcomponents/httpclient/4.0.1/httpclient-4.0.1.jar" />
+				<pathelement location="${m2.repo}/commons-codec/commons-codec/1.3/commons-codec-1.3.jar" />
+				<pathelement location="${m2.repo}/org/apache/httpcomponents/httpcore/4.0.1/httpcore-4.0.1.jar" />
+				<pathelement location="${m2.repo}/xpp3/xpp3/1.1.4c/xpp3-1.1.4c.jar" />
+				<pathelement location="${m2.repo}/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar" />
+			</classpath>
+			<batchtest fork="yes" todir="${test.out}">
+				<formatter type="plain" usefile="no" />
+				<fileset dir="${test.src}">
+					<include name="**/*Test.java" />
+				</fileset>
+			</batchtest>
+		</junit>
+	</target>
+
+	<target name="test-compile" depends="compile">
+		<mkdir dir="${test-classes}" />
+		<javac srcdir="${test.src}" destdir="${test-classes}" debug="on">
+			<classpath>
+				<pathelement location="${classes}" />
+				<pathelement location="${m2.repo}/fr/norsys/asoape/runtime-library/1.0-SNAPSHOT/runtime-library-1.0-SNAPSHOT.jar" />
+				<pathelement location="${m2.repo}/junit/junit/4.8.2/junit-4.8.2.jar" />
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="compile" depends="generate-sources">
+		<mkdir dir="${classes}" />
+		<javac srcdir="${soap.src}" destdir="${classes}" debug="on">
+			<classpath>
+				<pathelement location="${m2.repo}/fr/norsys/asoape/runtime-library/1.0-SNAPSHOT/runtime-library-1.0-SNAPSHOT.jar" />
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="generate-sources" depends="clean">
+		<generateSoap wsdlDir="${wsdl.src}" destDir="${soap.src}" />
+	</target>
+</project>

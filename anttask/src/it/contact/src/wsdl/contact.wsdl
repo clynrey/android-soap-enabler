@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:sample="http://asoape.norsys.fr/sample/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NewWSDLFile" targetNamespace="http://asoape.norsys.fr/sample/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+    <wsdl:types><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://asoape.norsys.fr/sample/">
+	<xsd:element name="findContactWithNameLike">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element
+					name="nameLike"
+					type="xsd:string">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="findContactWithNameLikeResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element
+					name="contact"
+					type="sample:ContactType" minOccurs="0" maxOccurs="unbounded">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:complexType name="ContactType">
+		<xsd:sequence>
+			<xsd:element
+				name="firstname"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element
+				name="lastname"
+				type="xsd:string">
+			</xsd:element>
+			<xsd:element
+				name="email"
+				type="sample:ContactEmailType" minOccurs="0" maxOccurs="unbounded">
+			</xsd:element>
+			<xsd:element
+				name="phone"
+				type="sample:ContactPhoneType" minOccurs="0" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ContactEmailType">
+		<xsd:complexContent>
+			<xsd:extension base="sample:ContactInfoType">
+				<xsd:sequence>
+					<xsd:element
+						name="email"
+						type="xsd:string">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="ContactPhoneType">
+		<xsd:complexContent>
+			<xsd:extension base="sample:ContactInfoType">
+				<xsd:sequence>
+					<xsd:element
+						name="phone"
+						type="xsd:string">
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType
+		name="ContactInfoType"
+		abstract="true">
+		<xsd:sequence>
+			<xsd:element
+				name="kind"
+				type="sample:ContactKindType">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:simpleType name="ContactKindType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="PERSONNAL"></xsd:enumeration>
+			<xsd:enumeration value="PROFESSIONNAL"></xsd:enumeration>
+			<xsd:enumeration value="OTHERS"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+</xsd:schema></wsdl:types>
+    <wsdl:message name="findContactWithNameLikeRequest">
+		<wsdl:part
+			name="parameters" element="sample:findContactWithNameLike">
+		</wsdl:part>
+	</wsdl:message>
+    <wsdl:message name="findContactWithNameLikeResponse">
+    	<wsdl:part
+    		name="parameters" element="sample:findContactWithNameLikeResponse">
+    	</wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="ContactServiceType">
+    	<wsdl:operation name="findContactWithNameLike">
+    		<wsdl:input message="sample:findContactWithNameLikeRequest"></wsdl:input>
+    		<wsdl:output message="sample:findContactWithNameLikeResponse"></wsdl:output>
+    	</wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding
+    	name="ContactServiceBinding"
+    	type="sample:ContactServiceType">
+    	<soap:binding
+    		style="document"
+    		transport="http://schemas.xmlsoap.org/soap/http" />
+    	<wsdl:operation name="findContactWithNameLike">
+    		<soap:operation soapAction="http://asoape.norsys.fr/sample/findContactWithNameLike" />
+    		<wsdl:input>
+    			<soap:body use="literal" />
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal" />
+    		</wsdl:output>
+    	</wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ContactService">
+    	<wsdl:port name="ContactServicePort" binding="sample:ContactServiceBinding">
+    		<soap:address location="http://www.example.org/" />
+    	</wsdl:port>
+    </wsdl:service></wsdl:definitions>

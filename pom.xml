@@ -61,9 +61,7 @@
 		<module>codegen</module>
 		<module>test/services</module>
 		<module>mojo</module>
-		<!-- 
 		<module>anttask</module>
-		 -->
 	</modules>
 	<scm>
 		<connection>scm:git:https://code.google.com/p/android-soap-enabler/</connection>
