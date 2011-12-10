@@ -33,7 +33,7 @@
 			<plugin>
 				<groupId>fr.norsys.asoape</groupId>
 				<artifactId>asoape-maven-plugin</artifactId>
-				<version>testing</version><!-- http://mojo.codehaus.org/shitty-maven-plugin/ -->
+				<version>${asoape.version}</version>
 				<executions>
 					<execution>
 						<goals>
