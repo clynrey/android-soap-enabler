@@ -28,6 +28,10 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
+import org.apache.velocity.app.Velocity;
+import org.apache.velocity.runtime.RuntimeConstants;
+import org.apache.velocity.runtime.RuntimeServices;
+import org.apache.velocity.runtime.log.LogChute;
 
 import fr.norsys.asoape.codegen.generator.WSDLGenerationException;
 import fr.norsys.asoape.codegen.generator.WSDLGenerator;
@@ -40,6 +44,7 @@ import fr.norsys.asoape.codegen.generator.WSDLGenerator;
  */
 public class GenerateAndroidClientMojo
     extends AbstractMojo
+    implements LogChute
 {
     /**
      * @parameter expression="${project}"
@@ -73,6 +78,8 @@ public class GenerateAndroidClientMojo
     public void execute()
         throws MojoExecutionException, MojoFailureException
     {
+        //  Redirecting Velocity log to the Maven output.
+        Velocity.setProperty( RuntimeConstants.RUNTIME_LOG_LOGSYSTEM, this );
         WSDLGenerator generator = new WSDLGenerator();
         generator.setOutputDirectory( outputDirectory );
         generator.setBeanSerializable( beanSerializable );
@@ -106,4 +113,96 @@ public class GenerateAndroidClientMojo
         }
     }
 
+    @Override
+    public void init( RuntimeServices rs )
+        throws Exception
+    {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public boolean isLevelEnabled( int level )
+    {
+        switch ( level )
+        {
+            case LogChute.TRACE_ID:
+                return getLog().isDebugEnabled();
+
+            case LogChute.DEBUG_ID:
+                return getLog().isDebugEnabled();
+
+            case LogChute.INFO_ID:
+                return getLog().isInfoEnabled();
+
+            case LogChute.WARN_ID:
+                return getLog().isWarnEnabled();
+
+            case LogChute.ERROR_ID:
+                return getLog().isErrorEnabled();
+
+            default:
+                return false;
+        }
+    }
+
+    @Override
+    public void log( int level, String message )
+    {
+        switch ( level )
+        {
+            case LogChute.TRACE_ID:
+                getLog().debug(message);
+                break;
+
+            case LogChute.DEBUG_ID:
+                getLog().debug(message);
+                break;
+
+            case LogChute.INFO_ID:
+                getLog().info(message);
+                break;
+
+            case LogChute.WARN_ID:
+                getLog().warn(message);
+                break;
+
+            case LogChute.ERROR_ID:
+                getLog().error(message);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void log( int level, String message, Throwable t )
+    {
+        switch ( level )
+        {
+            case LogChute.TRACE_ID:
+                getLog().debug(message, t);
+                break;
+
+            case LogChute.DEBUG_ID:
+                getLog().debug(message, t);
+                break;
+
+            case LogChute.INFO_ID:
+                getLog().info(message, t);
+                break;
+
+            case LogChute.WARN_ID:
+                getLog().warn(message, t);
+                break;
+
+            case LogChute.ERROR_ID:
+                getLog().error(message, t);
+                break;
+
+            default:
+                break;
+        }
+    }
 }
