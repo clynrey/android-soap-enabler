@@ -25,6 +25,7 @@
 		<groupId>fr.norsys.asoape</groupId>
 		<artifactId>android-soap-enabler</artifactId>
 		<version>1.0-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
 	</parent>
 	<name>Android SOAP Enabler Integration Test Services</name>
 	<artifactId>test-services</artifactId>
