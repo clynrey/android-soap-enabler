@@ -50,6 +50,16 @@
 			</roles>
 		</developer>
 	</developers>
+	<contributors>
+		<contributor>
+			<name>Thomas Recloux</name>
+			<email>thomas.recloux_(at)_gmail_(dot)_com</email>
+		</contributor>
+		<contributor>
+			<name>Alexandre Duhem</name>
+			<email>alexandreduhem_(at)_gmail_(dot)_com</email>
+		</contributor>
+	</contributors>
 	<licenses>
 		<license>
 			<name>GNU LESSER GENERAL PUBLIC LICENSE</name>
