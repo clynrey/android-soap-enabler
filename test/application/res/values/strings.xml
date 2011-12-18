@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, SampleAppActivity!</string>
+    <string name="app_name">SampleApp</string>
+    <string name="input">Input Value</string>
+    <string name="output">Output Value</string>
+    <string name="toCelsius">° F -> ° C</string>
+    <string name="toFahrenheit">° C-> ° F</string>
+</resources>

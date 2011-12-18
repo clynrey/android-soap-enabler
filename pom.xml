@@ -72,6 +72,7 @@
 		<module>codegen</module>
 		<module>test/services</module>
 		<module>mojo</module>
+		<module>test/application</module>
 		<module>anttask</module>
 	</modules>
 	<scm>
