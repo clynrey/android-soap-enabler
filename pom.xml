@@ -78,9 +78,9 @@
 		<profile>
 			<id>with-android-app</id>
 			<activation>
-				<property>
-					<name>env.ANDROID_HOME</name>
-				</property>
+				<file>
+					<exists>${env.ANDROID_HOME}</exists>
+				</file>
 			</activation>
 			<modules>
 				<module>test/application</module>
