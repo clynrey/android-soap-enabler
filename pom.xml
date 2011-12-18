@@ -72,9 +72,21 @@
 		<module>codegen</module>
 		<module>test/services</module>
 		<module>mojo</module>
-		<module>test/application</module>
 		<module>anttask</module>
 	</modules>
+	<profiles>
+		<profile>
+			<id>with-android-app</id>
+			<activation>
+				<property>
+					<name>env.ANDROID_HOME</name>
+				</property>
+			</activation>
+			<modules>
+				<module>test/application</module>
+			</modules>
+		</profile>
+	</profiles>
 	<scm>
 		<connection>scm:git:https://code.google.com/p/android-soap-enabler/</connection>
 		<developerConnection>scm:git:https://code.google.com/p/android-soap-enabler/</developerConnection>
