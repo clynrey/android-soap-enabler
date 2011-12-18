@@ -35,7 +35,7 @@ public class IntegrationTestContactService
     public void setUp()
         throws Exception
     {
-        service = new ContactServiceSoapImpl( new URL( ContactServiceSoapImpl.SOAPUI_URL ) );
+        service = new ContactServiceSoapImpl( new URL( ContactServiceSoapImpl.DEFAULT_URL ) );
     }
 
     @Test

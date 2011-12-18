@@ -68,9 +68,9 @@
 		</license>
 	</licenses>
 	<modules>
+		<module>test/services</module>
 		<module>library</module>
 		<module>codegen</module>
-		<module>test/services</module>
 		<module>mojo</module>
 		<module>anttask</module>
 	</modules>

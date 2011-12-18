@@ -16,28 +16,18 @@
  */
 package org.tempuri;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
-
-import org.junit.Before;
-import org.junit.Test;
-
-public class TempConvertSoapImplTest
+/**
+ * Temperature converter tool.
+ */
+public class TempConverter
 {
-    private TempConvertSoap service;
-
-    @Before
-    public void setUp()
-        throws Exception
+    static public double convertFromtCelsiusToFahrenheit( double celsius )
     {
-        service = new TempConvertSoapImpl( TempConvertSoapImpl.DEFAULT_SERVICE_URL );
+        return 9d * celsius / 5d + 32d;
     }
 
-    @Test
-    public void testCelsiusToFahrenheitString()
-        throws Exception
+    static public double convertFromFahrenheitToCelsius( double fahrenheit )
     {
-        assertThat( service.CelsiusToFahrenheit( "100" ), is( equalTo( "212" ) ) );
+        return 5d * ( fahrenheit - 32d ) / 9d;
     }
-
 }
