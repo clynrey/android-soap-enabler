@@ -28,7 +28,7 @@ import fr.norsys.asoape.xml.soap.SoapEnvelope;
 public class TempConvertSoapImpl
     implements TempConvertSoap
 {
-    public static final String DEFAULT_SERVICE_URL = "http://gwallet-macbookpro:8080/test-services/TempConvert";
+    public static final String DEFAULT_SERVICE_URL = "http://localhost:8080/test-services/TempConvert";
 
     public static final String PUBLIC_SERVICE_URL = "http://www.w3schools.com/webservices/tempconvert.asmx";
 
