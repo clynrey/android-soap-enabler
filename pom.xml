@@ -76,10 +76,10 @@
 	</modules>
 	<profiles>
 		<profile>
-			<id>with-android-app</id>
+			<id>add-android-app</id>
 			<activation>
 				<file>
-					<exists>${env.ANDROID_HOME}</exists>
+					<exists>${env.ANDROID_HOME}/tools/android</exists>
 				</file>
 			</activation>
 			<modules>
