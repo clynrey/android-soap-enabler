@@ -23,6 +23,7 @@
 		<version>1.1-SNAPSHOT</version>
 		<relativePath>../../pom.xml</relativePath>
 	</parent>
+	<groupId>fr.norsys.asoape.it</groupId>
 	<name>Android SOAP Enabler Integration Test Services</name>
 	<artifactId>test-services</artifactId>
 	<packaging>war</packaging>
