@@ -76,10 +76,21 @@
 	</modules>
 	<profiles>
 		<profile>
-			<id>add-android-app</id>
+			<id>add-android-app-onunix</id>
 			<activation>
 				<file>
 					<exists>${env.ANDROID_HOME}/tools/android</exists>
+				</file>
+			</activation>
+			<modules>
+				<module>test/application</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>add-android-app-onwin32</id>
+			<activation>
+				<file>
+					<exists>${env.ANDROID_HOME}/tools/android.bat</exists>
 				</file>
 			</activation>
 			<modules>

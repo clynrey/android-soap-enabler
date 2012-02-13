@@ -67,17 +67,11 @@ public class ComputerTempWSDLGeneratorTest
         WSDLReader reader = WSDLFactory.newInstance().newWSDLReader();
         Definition definition = reader.readWSDL( wsdlUrl.toString() );
         generator.generateFrom( definition );
-        File beanPackage = new File( outputDirectory, "fr/norsys/asoape/sample" );
+        File beanPackage = new File( outputDirectory, "org/tempuri" );
         assertTrue( beanPackage.exists() );
         assertTrue( beanPackage.isDirectory() );
-        File contactSourceFile = new File( beanPackage, "ContactType.java" );
-        assertTrue( contactSourceFile.exists() );
-        assertTrue( contactSourceFile.isFile() );
-        File contactServiceTypeSourceFile = new File( beanPackage, "ContactServiceType.java" );
+        File contactServiceTypeSourceFile = new File( beanPackage, "CelsiusToFahrenheit.java" );
         assertTrue( contactServiceTypeSourceFile.exists() );
         assertTrue( contactServiceTypeSourceFile.isFile() );
-        File contactKindTypeSourceFile = new File( beanPackage, "ContactKindType.java" );
-        assertTrue( contactKindTypeSourceFile.exists() );
-        assertTrue( contactKindTypeSourceFile.isFile() );
     }
 }

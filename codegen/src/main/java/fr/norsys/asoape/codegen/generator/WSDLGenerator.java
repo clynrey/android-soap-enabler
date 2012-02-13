@@ -22,6 +22,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
 
 import javax.wsdl.Definition;
 
@@ -234,7 +235,7 @@ public class WSDLGenerator
 
     private String packageDirectoryPathForPackage( String packageName )
     {
-        return packageName.replaceAll( "\\.", File.separator );
+        return packageName.replaceAll( "\\.", Matcher.quoteReplacement( File.separator ) );
     }
 
     private File packageDirectoryFor( HasNamespace hasNamespace )
