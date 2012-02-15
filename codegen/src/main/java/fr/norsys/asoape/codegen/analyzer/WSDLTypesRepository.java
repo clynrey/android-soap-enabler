@@ -353,7 +353,7 @@ class WSDLTypesRepository
     private void populateComplexType( WSDLNamespace namespace, WSDLComplexType type, Element typeElement )
         throws XPathExpressionException
     {
-        XPathExpression selectNestedElements = xpath.compile( "./xsd:sequence/xsd:element" );
+        XPathExpression selectNestedElements = xpath.compile( "./xsd:sequence/xsd:element|./xsd:all/xsd:element" );
         NodeList nestedElements = (NodeList) selectNestedElements.evaluate( typeElement, XPathConstants.NODESET );
         for ( int i = 0; i < nestedElements.getLength(); i++ )
         {
