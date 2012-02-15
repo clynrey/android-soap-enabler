@@ -92,7 +92,7 @@ public class ${type.toJavaType()}Impl
 #end
 #end
 #end
-#if( ${operation.faults.size} > 0 )
+#if( ${operation.faults.size()} > 0 )
 #then
 		throws
 #foreach( $fault in ${operation.faults} )

@@ -30,7 +30,7 @@ public class WSDLOperationBean
 
     private WSDLMessage output;
 
-    private List<WSDLMessage> faults;
+    private List<WSDLMessage> faults = new ArrayList<WSDLMessage>();
 
     @Override
     public String toString()
@@ -81,10 +81,6 @@ public class WSDLOperationBean
     @Override
     public void addFault( WSDLMessage fault )
     {
-        if (faults == null)
-        {
-            faults = new ArrayList<WSDLMessage>();
-        }
         faults.add( fault );
     }
 }
