@@ -30,19 +30,27 @@ public class ${message.toJavaType()}
 //	implements java.io.Serializable
 {
 #foreach( $part in ${message.parts} )
+#set ( $partName = ${part.name} )
+#if ( ${string.isJavaKeyword(${part.name})} )
+#set ( $partName = ${part.name.toUpperCase()} )
+#end
 	@XmlElement( name = "${part.name}", targetType=${part.type.toFullQualifiedJavaType()}.class, cardinality = Cardinality.ONE )
-	private ${part.type.toFullQualifiedJavaType()} ${part.name};
+	private ${part.type.toFullQualifiedJavaType()} $partName;
 
 #end
 #foreach( $part in ${message.parts} )
-	public ${part.type.toFullQualifiedJavaType()} get${string.capitalize(${part.name})}()
+#set ( $partName = ${part.name} )
+#if ( ${string.isJavaKeyword(${part.name})} )
+#set ( $partName = ${part.name.toUpperCase()} )
+#end
+	public ${part.type.toFullQualifiedJavaType()} get${string.capitalize($partName)}()
 	{
-		return this.${part.name};
+		return this.$partName;
 	}
 
-	public void set${string.capitalize(${part.name})}(${part.type.toFullQualifiedJavaType()} ${part.name})
+	public void set${string.capitalize($partName)}(${part.type.toFullQualifiedJavaType()} $partName)
 	{
-		this.${part.name} = ${part.name};
+		this.$partName = $partName;
 	}
 #end
 }
