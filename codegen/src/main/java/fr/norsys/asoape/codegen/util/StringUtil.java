@@ -101,6 +101,8 @@ public final class StringUtil
 
     static
     {
+        xml2javaTypes.put( "{http://www.w3.org/2001/XMLSchema}anyURI", "java.net.URI" );
+        xml2javaTypes.put( "{http://www.w3.org/2001/XMLSchema}base64Binary", "byte[]" );
         xml2javaTypes.put( "{http://www.w3.org/2001/XMLSchema}boolean", "Boolean" );
         xml2javaTypes.put( "{http://www.w3.org/2001/XMLSchema}date", "Date" );
         xml2javaTypes.put( "{http://www.w3.org/2001/XMLSchema}dateTime", "Date" );
@@ -111,8 +113,9 @@ public final class StringUtil
         xml2javaTypes.put( "{http://www.w3.org/2001/XMLSchema}integer", "BigInteger" );
         xml2javaTypes.put( "{http://www.w3.org/2001/XMLSchema}short", "Short" );
         xml2javaTypes.put( "{http://www.w3.org/2001/XMLSchema}string", "String" );
-        xml2javaTypes.put( "{http://www.w3.org/2001/XMLSchema}base64Binary", "byte[]" );
 
+        xml2fullQualifiedJavaTypes.put( "{http://www.w3.org/2001/XMLSchema}anyURI", "java.net.URI" );
+        xml2fullQualifiedJavaTypes.put( "{http://www.w3.org/2001/XMLSchema}base64Binary", "byte[]" );
         xml2fullQualifiedJavaTypes.put( "{http://www.w3.org/2001/XMLSchema}boolean", "java.lang.Boolean" );
         xml2fullQualifiedJavaTypes.put( "{http://www.w3.org/2001/XMLSchema}date", "java.util.Date" );
         xml2fullQualifiedJavaTypes.put( "{http://www.w3.org/2001/XMLSchema}dateTime", "java.util.Date" );
@@ -123,7 +126,6 @@ public final class StringUtil
         xml2fullQualifiedJavaTypes.put( "{http://www.w3.org/2001/XMLSchema}integer", "java.math.BigInteger" );
         xml2fullQualifiedJavaTypes.put( "{http://www.w3.org/2001/XMLSchema}short", "java.lang.Short" );
         xml2fullQualifiedJavaTypes.put( "{http://www.w3.org/2001/XMLSchema}string", "java.lang.String" );
-        xml2fullQualifiedJavaTypes.put( "{http://www.w3.org/2001/XMLSchema}base64Binary", "byte[]" );
     }
 
     protected StringUtil()
