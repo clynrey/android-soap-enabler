@@ -35,16 +35,16 @@ public interface ${type.toJavaType()}
 #else
 	${output.type.toFullQualifiedJavaType()}
 #end
-	${operation.name}(
+	${operation.name} (
 #if ( ${operation.input.getPart("parameters")} )
 		${operation.input.getPart("parameters").element.type.toFullQualifiedJavaType()} ${operation.input.getPart("parameters").element.name}
 	)
 #else
 #foreach( $input in ${operation.input.parts} )
 		${input.type.toFullQualifiedJavaType()} ${input.name}#if( $velocityCount < ${operation.input.parts.size()} - 1 ),
-#else)
 #end
 #end
+	)
 #end
 #if( ${operation.faults.size()} > 0 )
 #then
