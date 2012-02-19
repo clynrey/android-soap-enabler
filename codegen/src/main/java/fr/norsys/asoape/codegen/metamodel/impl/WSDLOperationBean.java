@@ -26,6 +26,8 @@ public class WSDLOperationBean
     extends WSDLObject
     implements WSDLOperation
 {
+    private Style style;
+
     private WSDLMessage input;
 
     private WSDLMessage output;
@@ -82,5 +84,17 @@ public class WSDLOperationBean
     public void addFault( WSDLMessage fault )
     {
         faults.add( fault );
+    }
+
+    @Override
+    public Style getStyle()
+    {
+        return style;
+    }
+
+    @Override
+    public void setStyle( Style style )
+    {
+        this.style = style;
     }
 }

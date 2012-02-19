@@ -21,12 +21,21 @@ import java.util.List;
 public interface WSDLOperation
     extends HasName
 {
+    public static enum Style
+    {
+        rpc, document;
+    }
+
+    void setStyle(Style style);
+
     void setInput(WSDLMessage inputMessage);
     
     void setOutput(WSDLMessage outputMessage);
     
     void addFault(WSDLMessage fault);
-    
+
+    Style getStyle();
+
     WSDLMessage getInput();
     
     WSDLMessage getOutput();

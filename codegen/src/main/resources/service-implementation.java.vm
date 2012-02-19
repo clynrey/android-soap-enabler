@@ -88,9 +88,9 @@ public class ${type.toJavaType()}Impl
 #else
 #foreach( $input in ${operation.input.parts} )
 		${input.type.toFullQualifiedJavaType()} ${input.name}#if( $velocityCount < ${operation.input.parts.size()} - 1 ),
-#else)
 #end
 #end
+	)
 #end
 #if( ${operation.faults.size()} > 0 )
 #then
@@ -114,6 +114,15 @@ public class ${type.toJavaType()}Impl
 		bindingContext.add( ${operation.output.toJavaType()}.class );
 #end
         SoapEnvelope out = new SoapEnvelope();
+#if ( ${operation.style} == "rpc" )
+        //  RPC style operation
+        ${operation.input.toJavaType()} request = new ${operation.input.toJavaType()}();
+#foreach( $input in ${operation.input.parts} )
+        request.set${string.capitalize(${input.name})}( ${input.name} );
+#end
+        out.getBody().add( request );
+#elseif ( ${operation.style} == "document" )
+        //  Document style operation
 #if ( ${operation.input.getPart("parameters")} )
         out.getBody().add( ${operation.input.getPart("parameters").element.name} );
 #else
@@ -121,15 +130,25 @@ public class ${type.toJavaType()}Impl
         out.getBody().add( ${input.name} );
 #end
 #end
+#end
 		try
 		{
         	SoapEnvelope in = transport.send( serviceUrl, out );
+#if ( ${operation.style} == "rpc" )
+        	${operation.output.toJavaType()} response = (${operation.output.toJavaType()}) in.getBody().get( 0 );
+#set ( $partName = ${operation.output.parts.get(0).name} )
+#if ( ${string.isJavaKeyword(${partName})} )
+#set ( $partName = ${partName.toUpperCase()} )
+#end
+        	return response.get${string.capitalize(${partName})}();
+#elseif ( ${operation.style} == "document" )
 #if ( ${operation.output.getPart("parameters")} )
         	${operation.output.getPart("parameters").element.type.toFullQualifiedJavaType()} response = (${operation.output.getPart("parameters").element.type.toFullQualifiedJavaType()}) in.getBody().get( 0 );
 #else
         	${operation.output.toJavaType()} response = (${operation.output.toJavaType()}) in.getBody().get( 0 );
 #end
         	return response;
+#end
         }
         catch ( MarshallingException cause )
         {

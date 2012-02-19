@@ -105,6 +105,11 @@ public class WSDLAnalyzer
     {
         WSDLOperation _operation = new WSDLOperationBean();
         _operation.setName( operation.getName() );
+        if (soapBindingStyle != null) {
+            _operation.setStyle( WSDLOperation.Style.valueOf( soapBindingStyle ) );
+        } else {
+            _operation.setStyle( WSDLOperation.Style.document );
+        }
         WSDLMessage input = analyzeInput( operation.getInput() );
         if ( "rpc".equals( soapBindingStyle ) )
         {
