@@ -31,14 +31,11 @@
 	<name>Android SOAP Enabler Sample Android Application</name>
 	<artifactId>test-application</artifactId>
 	<packaging>apk</packaging>
-	<properties>
-		<asoape.version>${project.version}</asoape.version>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>fr.norsys.asoape</groupId>
 			<artifactId>runtime-library</artifactId>
-			<version>${asoape.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.android</groupId>
@@ -55,7 +52,7 @@
 			<plugin>
 				<groupId>fr.norsys.asoape</groupId>
 				<artifactId>asoape-maven-plugin</artifactId>
-				<version>${asoape.version}</version>
+				<version>${project.version}</version>
 				<executions>
 					<execution>
 						<goals>
